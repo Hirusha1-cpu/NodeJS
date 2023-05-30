@@ -20,7 +20,17 @@ const f = [
 server.on('request',(req, res)=>{
     const items = req.url.split('/');
     // /f/1 => ['', 'f','2']
-    if(items[1] ==='f'){
+    if(req.method ==='POST' && items[1] === 'f'){
+        req.on('data', (data)=>{
+            const f1 = data.toString();
+            console.log('Request:', f1);
+            f.push(JSON.parse(f1));
+        });
+        
+        req.pipe(res);
+
+    }
+    else if(req.method === 'GET' && items[1] ==='f'){
 
        // res.writeHead(200, {'Content-Type': 'application/json'} );
        res.statusCode = 200;
@@ -35,7 +45,7 @@ server.on('request',(req, res)=>{
        }
         
      
-    }else if( items[1] === 'm'){
+    }else if(req.method ==='GET' &&  items[1] === 'm'){
         res.setHeader('Content-Type', 'text/html');
         res.write('<html>');
         res.write('<head><title>Joke Generator</title></head>');
