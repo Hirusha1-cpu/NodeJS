@@ -1,4 +1,4 @@
-const f_model = [
+const model = [
     {
         id:0,
         name:'Hirusha'
@@ -13,4 +13,4 @@ const f_model = [
     },
 ];
 
-module.exports = f_model;
+module.exports = model;
