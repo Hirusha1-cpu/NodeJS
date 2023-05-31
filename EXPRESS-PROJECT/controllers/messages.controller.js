@@ -1,5 +1,8 @@
- function g_m(req, res){
-    res.send("Hii")
+const path = require('path');
+
+function g_m(req, res){
+    
+    res.sendFile(path.join(__dirname,'..', 'public','images', 'peakpx.jpg'))
 }
 
 function p_m(req, res){
